@@ -8,8 +8,7 @@
 #include "rd/rdnaptrans2008.2.cpp" // voor converteren van wsg naar rd en andersom
 #include <algorithm>
 #include <vector>
-#include "globals.h"
-
+#include "global.h"
 void remove_dubl_endl(std::string& str);
 void readKML(rapidxml::xml_document<>& doc,std::string filename);
 rapidxml::xml_node<> *get_groepen(rapidxml::xml_document<>& doc);
@@ -68,8 +67,8 @@ std::vector <std::vector < data::Homebase> > kml_h::sort_hb(std::vector<data::Ho
     db.push_back(D);
     db.push_back(E);
     db.push_back(F);
-    for (int i = 0; i < global::NDG;i++)
-        global::ABCDEF[i].HQs=db[i];
+    for (int i = 0; i < NDG;i++)
+        ABCDEF[i].HQs=db[i];
     return db;
 }
 /** \brief
@@ -341,7 +340,7 @@ data::Deelgebied createDeelgebied(string naam, std::vector<data::RD>& Grens, std
     dg.rechtsboven.y = Grens [index].y  + foutmarge;
     index = find_higest_x(Grens);
     dg.rechtsboven.x = Grens[index].x + foutmarge;
-    global::ABCDEF[dg.deelgebied] = dg;
+    ABCDEF[dg.deelgebied] = dg;
     return dg;
 }
 /** \brief vind het grootste x coordinaat uit een vector met punten. nodig om een gebied af te bakenen waarin het deelgebied zich bevindt
